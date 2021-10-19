@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+
+.Menu {
+  display: flex;
+  flex-direction: row;
+  background-color: beige;
+}
+
+#azul {
+  width: 30px;
+  height: 30px;
+  background-color: green;
+}
+
+.Grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 370px;
+  height: auto;
+  margin: 10px;
+}
+
+#box {
+  display: flex;
+  flex-wrap: wrap;
+  width: 35px;
+  height: 35px;
+  background-color: white;
+  border: 1px solid black
+}
+
+.ColorSelector{
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+  margin: 10px;
+}
+
