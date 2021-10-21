@@ -1,34 +1,26 @@
 import './App.css';
 import React, { useState } from 'react';
+import lodash from 'lodash';
 
 const colors = ['blue', 'black', 'red', 'green', 'yellow', 'white'];
 
+let boxes = [];
+
+//Imprime los div tipo box, para luego pintarlos utilizando la libreria lodash
+lodash.times(100, (i) => {
+  boxes.push(i);
+});
 
 function App() {
-
-  const boxes = [];
-
-  for (let i = 0; i <= 99; i++) {
-    boxes.push({id: i, fondo: 'green', key: i, class: 'box'});
-  }
-
   const [selectedColor, setSelectedColor] = useState ();
-
-  const [box, setBox] = useState(boxes);
 
   const handleClick = (event) => {
     setSelectedColor(event.target.name);
   }
 
+
   const handleBoxes = (event) => {
-    const updateBox = box.map((pbox) => {
-      if (pbox.id === event.target.id) {
-        pbox.background = selectedColor;
-      }
-      return pbox;
-      }
-    );
-    setBox(updateBox);
+    event.target.style.background = selectedColor;
   }
 
   const handleNewBoard = () => {
@@ -43,8 +35,8 @@ function App() {
     <div className="App">
       <div>
         <div className="Menu">
-          <button onClick={handleNewBoard}>New Board</button>
-          <button onClick={handlePrint}>Print Drawing</button>
+          <button className="Botones" onClick={handleNewBoard}>New Board</button>
+          <button className="Botones" onClick={handlePrint}>Print Drawing</button>
           <p> Elige un color: </p>
           <ul className="ColorSelector">
               {colors.map((color) =>( 
@@ -52,11 +44,14 @@ function App() {
                   style={{
                     width: '50px',
                     height:'50px', 
-                    border: color === selectedColor ? '2px solid black' : '1px solid black',
+                    border: color === selectedColor ? '3px solid black' : '1px solid black',
                     margin: '3px',
-                    background: color
+                    background: color,
+                    textDecoration: 'none',
+                    display: 'inline-block',
                 }}>
-                  <button
+                  <button 
+                    className="ColorButton"
                     type="button"
                     onClick={handleClick}
                     name={color}
@@ -68,25 +63,18 @@ function App() {
           </ul>
         </div>
         <div className="Grid">
-                {boxes.map(
-                  (pbox) => {
-                    return(
-                      <div
-                      key ={pbox.id}
-                      id = {pbox.id}
-                      className = {pbox.class}
-                      background = {pbox.fondo}
-                      onClick = {handleBoxes}
-                      draggable = 'true'
-                      onDragOver = {handleBoxes}
-                      >
-                      </div>
-                    )
-                  }
-                )}
+          {boxes.map(key => {
+            return (
+              <div draggable="True" className='box' id={key} key={key} onClick={handleBoxes} onDragOver={handleBoxes}></div>
+            )
+          })}
         </div>
         <div className="Grid">
-
+        {boxes.map(key => {
+            return (
+              <div className='box2' id={key} key={key+100}></div>
+            )
+          })}
         </div>
       </div>
     </div>

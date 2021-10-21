@@ -62,7 +62,7 @@
   flex-wrap: wrap;
   width: 35px;
   height: 35px;
-  border: 1px solid black
+  border: 1px solid black;
 }
 
 .box2 {
@@ -80,3 +80,19 @@
   margin: 10px;
 }
 
+.Botones {
+  background-color: lightslategrey; 
+  height: 50px;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+}
+
+.ColorButton{
+  text-decoration: none;
+  display: inline-block;
+}
